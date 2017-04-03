@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uptime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.uptimesoftware.com/erdc/erdc erdc" xmlns="http://www.uptimesoftware.com/erdc/erdc" xmlns:upt="http://www.uptimesoftware.com/erdc/erdc" version="4.0" target_grouping="other">
+	<class>Webpage Load and Certificate Stats</class>
+	<exec>com.uptimesoftware.uptime.erdc.MonitorCustomScriptRunner</exec>
+	<erdc_version>1.0</erdc_version>
+    <category>Applications - Web Services</category>
+    <category_related>Network Service Monitors</category_related>
+    <grid_info>
+        <supported_versions>7.3,7.4,7.5,7.6,7.7,7.8,7.9</supported_versions>
+        <supported_platforms>windows, linux</supported_platforms>
+        <upgrade_in_place>true</upgrade_in_place>
+        <requires_agent_scripts>false</requires_agent_scripts>
+    </grid_info>
+	<elements>
+		<element name="process_windows" parameter_type="input" data_type="string" gui_basic="1" range_type="0" hidden="true">
+			<control_options> size:40 </control_options>
+			<default_value>plugins/scripts/webpageloadstats/webpageloadstats.bat</default_value>
+			<short_description>Script Name</short_description>
+			<long_description>Name of the script/binary/process to be executed by up.time </long_description>
+			<validation_rule><alphanumeric/></validation_rule>
+			<error_message><alphanumeric>required field</alphanumeric></error_message>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name="process_linux" parameter_type="input" data_type="string" gui_basic="1" range_type="0" hidden="true">
+			<control_options> size:40 </control_options>
+			<default_value>plugins/scripts/webpageloadstats/webpageloadstats.sh</default_value>
+			<short_description>Script Name</short_description>
+			<long_description>Name of the script/binary/process to be executed by up.time </long_description>
+			<validation_rule><alphanumeric/></validation_rule>
+			<error_message><alphanumeric>required field</alphanumeric></error_message>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='url' parameter_type='input' data_type='string' gui_basic='1' range_type='0' units=''>
+			<control_options>size:40</control_options>
+			<default_value>https://site.com/</default_value>
+			<validation_rule/><error_message/>
+			<short_description>URL</short_description>
+			<long_description>Enter the URL to test against.</long_description>
+			<gui_type><string/></gui_type>
+		</element>		
+		<element name='redirectAction' parameter_type="input" data_type="boolean" gui_basic="1" range_type="0"> 
+			<gui_type><boolean/></gui_type>
+			<control_options>size:1 </control_options> 
+			<default_value>1</default_value> 
+			<short_description>Redirect</short_description>
+			<long_description>Follow redirects?</long_description>
+			<validation_rule/> 
+			<error_message/> 
+		</element>
+		<element name='verboseCert' parameter_type="input" data_type="boolean" gui_basic="1" range_type="0"> 
+			<gui_type><boolean/></gui_type> 
+			<control_options>size:1 </control_options> 
+			<default_value>1</default_value> 
+			<short_description>Verbose SSL Certificate Info</short_description>
+			<long_description>Show subject and issuer info for SSL enabled sites.</long_description>			<validation_rule/> 
+			<validation_rule/> 
+			<error_message/> 
+		</element>		
+		<group name="g_pagestats" switch="0">
+		<short_description>Statistics</short_description>
+		<long_description>Page Loading Statistics</long_description>
+		<element name='content_type' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>content_type</short_description>
+			<long_description>Content-Type: of the requested document. NULL indicates server did not send valid Content-Type: header</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='http_code' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>http_code</short_description>
+			<long_description>Last received HTTP code</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='header_size' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='bytes'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>header_size</short_description>
+			<long_description>Total size of all headers received</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='request_size' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='bytes'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>request_size</short_description>
+			<long_description>Total size of issued requests</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='filetime' parameter_type='output' data_type='string' gui_basic='' range_type='0' units='datetime'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>filetime</short_description>
+			<long_description>Remote time of the retrieved document - if unavailable nothing is returned</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='redirect_count' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='#'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>redirect_count</short_description>
+			<long_description>Number of redirects</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='redirect_time' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='ms'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>redirect_time</short_description>
+			<long_description>Time in milliseconds of all redirection steps before final transaction was started</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='namelookup_time' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='ms'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>namelookup_time</short_description>
+			<long_description>Time in milliseconds until name resolving was complete</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='connect_time' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='ms'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>connect_time</short_description>
+			<long_description>Time in milliseconds it took to establish the connection</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='pretransfer_time' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='ms'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>pretransfer_time</short_description>
+			<long_description>Time in milliseconds from start until just before file transfer begins</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='starttransfer_time' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='ms'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>starttransfer_time</short_description>
+			<long_description>Time in milliseconds until the first byte is about to be transferred</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='total_time' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='ms'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>total_time</short_description>
+			<long_description>Total transaction time in milliseconds for last transfer</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='size_download' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='bytes'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>size_download</short_description>
+			<long_description>Total number of bytes downloaded</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='speed_download' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='bps'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>speed_download</short_description>
+			<long_description>Average download speed</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='download_content_length' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='bytes'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>download_content_length</short_description>
+			<long_description>Content length of download</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		<element name='certificate_expiry_date' parameter_type='output' data_type='string' gui_basic='' range_type='0' units='datetime'>
+			<control_options>size:20</control_options>
+			<default_value></default_value>
+			<short_description>Certificate Expiration Date</short_description>
+			<long_description>Certificate Expiration Date</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>		
+		<element name='certificate_expiry_days' parameter_type='output' data_type='integer' gui_basic='' range_type='0' units='days'>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>SSL cert expiry days</short_description>
+			<long_description>Number of days until SSL certificate expires.</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+		</group>
+		
+		<group name="g_certIssuer" switch="0">
+		<short_description>Certificate Issuer</short_description>
+		<long_description>Returns information about the certificate issuing authority</long_description>
+		<element name='cert_issuer_C' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Country</short_description>
+			<long_description>Issuer country of origin</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_issuer_O' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Organization</short_description>
+			<long_description>Issuing organization</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_issuer_OU' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Organizational unit</short_description>
+			<long_description>Issuer organizational unit</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_issuer_CN' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Common Name</short_description>
+			<long_description>Common name of cert</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		</group>
+		
+		<group name="g_certSubject" switch="0">
+		<short_description>Certificate Subject</short_description>
+		<long_description>Returns information about the certificate subject</long_description>
+		<element name='cert_subject_C' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Country</short_description>
+			<long_description>Subject country of origin</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_subject_ST' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>State</short_description>
+			<long_description>Subject state</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_subject_L' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Locale / City</short_description>
+			<long_description>Subject locale &#x28;city&#x29;</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_subject_O' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Organization</short_description>
+			<long_description>Subject organization</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_subject_OU' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Organizational unit</short_description>
+			<long_description>Subject organizational unit</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='cert_subject_CN' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:16</control_options>
+			<default_value></default_value>
+			<short_description>Common Name</short_description>
+			<long_description>Certificate common name, typically the host or domain &#x28;wildcard certs&#x29; for which it was issued</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		</group>
+		
+		<element name="timer" parameter_type="output" data_type="integer" gui_basic="0" range_type="0" units="ms">
+			<control_options>size:8</control_options>
+			<default_value/>
+			<short_description>Response time</short_description>
+			<long_description>How long Uptime took to run the monitor in ms</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><integer/></gui_type>
+		</element>
+	</elements>
+	<help> </help>
+</uptime>
