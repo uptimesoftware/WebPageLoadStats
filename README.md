@@ -3,7 +3,8 @@ uses PHP curl mod to test a website loading and its SSL certificate
 
 Here is a sample of what it returns (using https://support.uptimesoftware.com as an example)
 
-* content_type: text/html; charset=UTF-8
+* content_type: text/html
+* content_encoding: charset=UTF-8
 * http_code: 200-OK
 * header_size: 740
 * request_size: 65
@@ -17,15 +18,15 @@ Here is a sample of what it returns (using https://support.uptimesoftware.com as
 * download_content_length: -1
 * ssl_verify_result: 20
 * Country: US
-* Organization: Symantec Corporation
-* Organizational unit: Symantec Trust Network
-* Common Name: Symantec Class 3 Secure Server SHA256 SSL CA
-* Country: US
-* State: Texas
-* Locale / City: houston
-* Organization: Idera, Inc.
+* Issuer Organization: Symantec Corporation
+* Issuer Organizational unit: Symantec Trust Network
+* Issuer Common Name: Symantec Class 3 Secure Server SHA256 SSL CA
+* Subject Country: US
+* Subject State: Texas
+* Subject Locale / City: houston
+* Subject Organization: Idera, Inc.
 * Organizational unit: Idera, Inc.
-* Common Name: support.uptimesoftware.com
+* Subject Common Name: support.uptimesoftware.com
 * Certificate Expiration Date: 2018-03-06 23:59:59 GMT
 * SSL cert expiry days: 336
 
