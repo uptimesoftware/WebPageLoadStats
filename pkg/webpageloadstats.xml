@@ -2,7 +2,7 @@
 <uptime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.uptimesoftware.com/erdc/erdc erdc" xmlns="http://www.uptimesoftware.com/erdc/erdc" xmlns:upt="http://www.uptimesoftware.com/erdc/erdc" version="4.0" target_grouping="other">
 	<class>Webpage Load and Certificate Stats</class>
 	<exec>com.uptimesoftware.uptime.erdc.MonitorCustomScriptRunner</exec>
-	<erdc_version>1.0</erdc_version>
+	<erdc_version>1.1</erdc_version>
     <category>Applications - Web Services</category>
     <category_related>Network Service Monitors</category_related>
     <grid_info>
@@ -63,7 +63,16 @@
 			<control_options>size:8</control_options>
 			<default_value></default_value>
 			<short_description>content_type</short_description>
-			<long_description>Content-Type: of the requested document. NULL indicates server did not send valid Content-Type: header</long_description>
+			<long_description>Content-Type of the requested document. NULL indicates server did not send valid Content-Type: header</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type><string/></gui_type>
+		</element>
+		<element name='content_encoding' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
+			<control_options>size:8</control_options>
+			<default_value></default_value>
+			<short_description>content_encoding</short_description>
+			<long_description>Content-Encoding of the requested document. NULL indicates server did not send valid Content-Type: header</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
@@ -218,36 +227,36 @@
 		<short_description>Certificate Issuer</short_description>
 		<long_description>Returns information about the certificate issuing authority</long_description>
 		<element name='cert_issuer_C' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Country</short_description>
+			<short_description>Issuer Country</short_description>
 			<long_description>Issuer country of origin</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_issuer_O' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Organization</short_description>
+			<short_description>Issuer Organization</short_description>
 			<long_description>Issuing organization</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_issuer_OU' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Organizational unit</short_description>
+			<short_description>Issuer Organizational unit</short_description>
 			<long_description>Issuer organizational unit</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_issuer_CN' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Common Name</short_description>
+			<short_description>Issuer Common Name</short_description>
 			<long_description>Common name of cert</long_description>
 			<validation_rule/>
 			<error_message/>
@@ -259,54 +268,54 @@
 		<short_description>Certificate Subject</short_description>
 		<long_description>Returns information about the certificate subject</long_description>
 		<element name='cert_subject_C' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Country</short_description>
+			<short_description>Subject Country</short_description>
 			<long_description>Subject country of origin</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_subject_ST' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>State</short_description>
+			<short_description>Subject State</short_description>
 			<long_description>Subject state</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_subject_L' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Locale / City</short_description>
-			<long_description>Subject locale &#x28;city&#x29;</long_description>
+			<short_description>Subject Locale or City</short_description>
+			<long_description>Subject locale or city</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_subject_O' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Organization</short_description>
+			<short_description>Subject Organization</short_description>
 			<long_description>Subject organization</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_subject_OU' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Organizational unit</short_description>
+			<short_description>Subject Organizational unit</short_description>
 			<long_description>Subject organizational unit</long_description>
 			<validation_rule/>
 			<error_message/>
 			<gui_type><string/></gui_type>
 		</element>
 		<element name='cert_subject_CN' parameter_type='output' data_type='string' gui_basic='' range_type='0' units=''>
-			<control_options>size:16</control_options>
+			<control_options>size:8</control_options>
 			<default_value></default_value>
-			<short_description>Common Name</short_description>
+			<short_description>Subject Common Name</short_description>
 			<long_description>Certificate common name, typically the host or domain &#x28;wildcard certs&#x29; for which it was issued</long_description>
 			<validation_rule/>
 			<error_message/>
